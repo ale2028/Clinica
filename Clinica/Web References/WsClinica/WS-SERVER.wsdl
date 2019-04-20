@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Registrar_Usuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:Entity_User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Entity_User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellido1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellido2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Registrar_UsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Registrar_UsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Remover_Usuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Remover_UsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Remover_UsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login_Usuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login_UsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Login_UsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Data_User">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Data_UserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Data_UserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Doctor_Data_Cita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Doctor_Data_CitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Doctor_Data_CitaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Registrar_Doctor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doctor" type="tns:Entity_Doctor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Entity_Doctor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellido1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellido2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="especialidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Registrar_DoctorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Registrar_DoctorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Remover_Doctor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Remover_DoctorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Remover_DoctorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login_Doctor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login_DoctorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Login_DoctorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agendar_Cita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agendar_CitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Agendar_CitaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Remover_Cita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Remover_CitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Remover_CitaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Editar_Cita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Editar_CitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Editar_CitaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crea_Historia_Clinica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crea_Historia_ClinicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Crea_Historia_ClinicaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Elimina_Historia_Clinica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Elimina_Historia_ClinicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Elimina_Historia_ClinicaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Registrar_UsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:Registrar_Usuario" />
+  </wsdl:message>
+  <wsdl:message name="Registrar_UsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:Registrar_UsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Remover_UsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:Remover_Usuario" />
+  </wsdl:message>
+  <wsdl:message name="Remover_UsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:Remover_UsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Login_UsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:Login_Usuario" />
+  </wsdl:message>
+  <wsdl:message name="Login_UsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:Login_UsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Data_UserSoapIn">
+    <wsdl:part name="parameters" element="tns:Data_User" />
+  </wsdl:message>
+  <wsdl:message name="Data_UserSoapOut">
+    <wsdl:part name="parameters" element="tns:Data_UserResponse" />
+  </wsdl:message>
+  <wsdl:message name="Doctor_Data_CitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Doctor_Data_Cita" />
+  </wsdl:message>
+  <wsdl:message name="Doctor_Data_CitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Doctor_Data_CitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Registrar_DoctorSoapIn">
+    <wsdl:part name="parameters" element="tns:Registrar_Doctor" />
+  </wsdl:message>
+  <wsdl:message name="Registrar_DoctorSoapOut">
+    <wsdl:part name="parameters" element="tns:Registrar_DoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="Remover_DoctorSoapIn">
+    <wsdl:part name="parameters" element="tns:Remover_Doctor" />
+  </wsdl:message>
+  <wsdl:message name="Remover_DoctorSoapOut">
+    <wsdl:part name="parameters" element="tns:Remover_DoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="Login_DoctorSoapIn">
+    <wsdl:part name="parameters" element="tns:Login_Doctor" />
+  </wsdl:message>
+  <wsdl:message name="Login_DoctorSoapOut">
+    <wsdl:part name="parameters" element="tns:Login_DoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="Agendar_CitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Agendar_Cita" />
+  </wsdl:message>
+  <wsdl:message name="Agendar_CitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Agendar_CitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Remover_CitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Remover_Cita" />
+  </wsdl:message>
+  <wsdl:message name="Remover_CitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Remover_CitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Editar_CitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Editar_Cita" />
+  </wsdl:message>
+  <wsdl:message name="Editar_CitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Editar_CitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Crea_Historia_ClinicaSoapIn">
+    <wsdl:part name="parameters" element="tns:Crea_Historia_Clinica" />
+  </wsdl:message>
+  <wsdl:message name="Crea_Historia_ClinicaSoapOut">
+    <wsdl:part name="parameters" element="tns:Crea_Historia_ClinicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Elimina_Historia_ClinicaSoapIn">
+    <wsdl:part name="parameters" element="tns:Elimina_Historia_Clinica" />
+  </wsdl:message>
+  <wsdl:message name="Elimina_Historia_ClinicaSoapOut">
+    <wsdl:part name="parameters" element="tns:Elimina_Historia_ClinicaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WS_SERVERSoap">
+    <wsdl:operation name="Registrar_Usuario">
+      <wsdl:input message="tns:Registrar_UsuarioSoapIn" />
+      <wsdl:output message="tns:Registrar_UsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Usuario">
+      <wsdl:input message="tns:Remover_UsuarioSoapIn" />
+      <wsdl:output message="tns:Remover_UsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Usuario">
+      <wsdl:input message="tns:Login_UsuarioSoapIn" />
+      <wsdl:output message="tns:Login_UsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Data_User">
+      <wsdl:input message="tns:Data_UserSoapIn" />
+      <wsdl:output message="tns:Data_UserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Doctor_Data_Cita">
+      <wsdl:input message="tns:Doctor_Data_CitaSoapIn" />
+      <wsdl:output message="tns:Doctor_Data_CitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Registrar_Doctor">
+      <wsdl:input message="tns:Registrar_DoctorSoapIn" />
+      <wsdl:output message="tns:Registrar_DoctorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Doctor">
+      <wsdl:input message="tns:Remover_DoctorSoapIn" />
+      <wsdl:output message="tns:Remover_DoctorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login_Doctor">
+      <wsdl:input message="tns:Login_DoctorSoapIn" />
+      <wsdl:output message="tns:Login_DoctorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Agendar_Cita">
+      <wsdl:input message="tns:Agendar_CitaSoapIn" />
+      <wsdl:output message="tns:Agendar_CitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Cita">
+      <wsdl:input message="tns:Remover_CitaSoapIn" />
+      <wsdl:output message="tns:Remover_CitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Editar_Cita">
+      <wsdl:input message="tns:Editar_CitaSoapIn" />
+      <wsdl:output message="tns:Editar_CitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crea_Historia_Clinica">
+      <wsdl:input message="tns:Crea_Historia_ClinicaSoapIn" />
+      <wsdl:output message="tns:Crea_Historia_ClinicaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Elimina_Historia_Clinica">
+      <wsdl:input message="tns:Elimina_Historia_ClinicaSoapIn" />
+      <wsdl:output message="tns:Elimina_Historia_ClinicaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_SERVERSoap" type="tns:WS_SERVERSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Registrar_Usuario">
+      <soap:operation soapAction="http://tempuri.org/Registrar_Usuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Usuario">
+      <soap:operation soapAction="http://tempuri.org/Remover_Usuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Usuario">
+      <soap:operation soapAction="http://tempuri.org/Login_Usuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Data_User">
+      <soap:operation soapAction="http://tempuri.org/Data_User" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Doctor_Data_Cita">
+      <soap:operation soapAction="http://tempuri.org/Doctor_Data_Cita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registrar_Doctor">
+      <soap:operation soapAction="http://tempuri.org/Registrar_Doctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Doctor">
+      <soap:operation soapAction="http://tempuri.org/Remover_Doctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Doctor">
+      <soap:operation soapAction="http://tempuri.org/Login_Doctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agendar_Cita">
+      <soap:operation soapAction="http://tempuri.org/Agendar_Cita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Cita">
+      <soap:operation soapAction="http://tempuri.org/Remover_Cita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Editar_Cita">
+      <soap:operation soapAction="http://tempuri.org/Editar_Cita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crea_Historia_Clinica">
+      <soap:operation soapAction="http://tempuri.org/Crea_Historia_Clinica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Elimina_Historia_Clinica">
+      <soap:operation soapAction="http://tempuri.org/Elimina_Historia_Clinica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_SERVERSoap12" type="tns:WS_SERVERSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Registrar_Usuario">
+      <soap12:operation soapAction="http://tempuri.org/Registrar_Usuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Usuario">
+      <soap12:operation soapAction="http://tempuri.org/Remover_Usuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Usuario">
+      <soap12:operation soapAction="http://tempuri.org/Login_Usuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Data_User">
+      <soap12:operation soapAction="http://tempuri.org/Data_User" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Doctor_Data_Cita">
+      <soap12:operation soapAction="http://tempuri.org/Doctor_Data_Cita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registrar_Doctor">
+      <soap12:operation soapAction="http://tempuri.org/Registrar_Doctor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Doctor">
+      <soap12:operation soapAction="http://tempuri.org/Remover_Doctor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login_Doctor">
+      <soap12:operation soapAction="http://tempuri.org/Login_Doctor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agendar_Cita">
+      <soap12:operation soapAction="http://tempuri.org/Agendar_Cita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remover_Cita">
+      <soap12:operation soapAction="http://tempuri.org/Remover_Cita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Editar_Cita">
+      <soap12:operation soapAction="http://tempuri.org/Editar_Cita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crea_Historia_Clinica">
+      <soap12:operation soapAction="http://tempuri.org/Crea_Historia_Clinica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Elimina_Historia_Clinica">
+      <soap12:operation soapAction="http://tempuri.org/Elimina_Historia_Clinica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_SERVER">
+    <wsdl:port name="WS_SERVERSoap" binding="tns:WS_SERVERSoap">
+      <soap:address location="https://ws-server-clinica.azurewebsites.net/WS-SERVER.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_SERVERSoap12" binding="tns:WS_SERVERSoap12">
+      <soap12:address location="https://ws-server-clinica.azurewebsites.net/WS-SERVER.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
