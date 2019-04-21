@@ -41,19 +41,5 @@ namespace Clinica.Models
         [DataType(DataType.PhoneNumber)]
         public string Telefono { set; get; }
 
-        public WsClinica.Entity_Doctor AsWebServiceModel()
-        {
-            WsClinica.Entity_Doctor doctor = new WsClinica.Entity_Doctor();
-            doctor.apellido1 = this.Apellido1;
-            doctor.apellido2 = this.Apellido2;
-            doctor.cedula = this.Cedula;
-            doctor.correo = this.Correo;
-            doctor.especialidad = this.Especialidad;
-            doctor.nombre = this.Nombre;
-            doctor.password = this.Password;
-            doctor.telefono = this.Telefono;
-            return doctor;
-        }
-
     }
 }

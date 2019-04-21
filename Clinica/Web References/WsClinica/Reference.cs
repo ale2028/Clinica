@@ -50,11 +50,11 @@ namespace Clinica.WsClinica {
         
         private System.Threading.SendOrPostCallback Remover_CitaOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Editar_CitaOperationCompleted;
+        private System.Threading.SendOrPostCallback Data_Cita_DOCTOROperationCompleted;
         
-        private System.Threading.SendOrPostCallback Crea_Historia_ClinicaOperationCompleted;
+        private System.Threading.SendOrPostCallback Data_Cita_UserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Elimina_Historia_ClinicaOperationCompleted;
+        private System.Threading.SendOrPostCallback Data_DOCTORESOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -125,34 +125,46 @@ namespace Clinica.WsClinica {
         public event Remover_CitaCompletedEventHandler Remover_CitaCompleted;
         
         /// <remarks/>
-        public event Editar_CitaCompletedEventHandler Editar_CitaCompleted;
+        public event Data_Cita_DOCTORCompletedEventHandler Data_Cita_DOCTORCompleted;
         
         /// <remarks/>
-        public event Crea_Historia_ClinicaCompletedEventHandler Crea_Historia_ClinicaCompleted;
+        public event Data_Cita_UserCompletedEventHandler Data_Cita_UserCompleted;
         
         /// <remarks/>
-        public event Elimina_Historia_ClinicaCompletedEventHandler Elimina_Historia_ClinicaCompleted;
+        public event Data_DOCTORESCompletedEventHandler Data_DOCTORESCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Registrar_Usuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string Registrar_Usuario(Entity_User user) {
+        public string Registrar_Usuario(string cedula, string nombre, string apellido1, string apellido2, string correo, string password, string telefono) {
             object[] results = this.Invoke("Registrar_Usuario", new object[] {
-                        user});
+                        cedula,
+                        nombre,
+                        apellido1,
+                        apellido2,
+                        correo,
+                        password,
+                        telefono});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void Registrar_UsuarioAsync(Entity_User user) {
-            this.Registrar_UsuarioAsync(user, null);
+        public void Registrar_UsuarioAsync(string cedula, string nombre, string apellido1, string apellido2, string correo, string password, string telefono) {
+            this.Registrar_UsuarioAsync(cedula, nombre, apellido1, apellido2, correo, password, telefono, null);
         }
         
         /// <remarks/>
-        public void Registrar_UsuarioAsync(Entity_User user, object userState) {
+        public void Registrar_UsuarioAsync(string cedula, string nombre, string apellido1, string apellido2, string correo, string password, string telefono, object userState) {
             if ((this.Registrar_UsuarioOperationCompleted == null)) {
                 this.Registrar_UsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistrar_UsuarioOperationCompleted);
             }
             this.InvokeAsync("Registrar_Usuario", new object[] {
-                        user}, this.Registrar_UsuarioOperationCompleted, userState);
+                        cedula,
+                        nombre,
+                        apellido1,
+                        apellido2,
+                        correo,
+                        password,
+                        telefono}, this.Registrar_UsuarioOperationCompleted, userState);
         }
         
         private void OnRegistrar_UsuarioOperationCompleted(object arg) {
@@ -282,24 +294,38 @@ namespace Clinica.WsClinica {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Registrar_Doctor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string Registrar_Doctor(Entity_Doctor doctor) {
+        public string Registrar_Doctor(string cedula, string nombre, string apellido1, string apellido2, string correo, string password, string especialidad, string telefono) {
             object[] results = this.Invoke("Registrar_Doctor", new object[] {
-                        doctor});
+                        cedula,
+                        nombre,
+                        apellido1,
+                        apellido2,
+                        correo,
+                        password,
+                        especialidad,
+                        telefono});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void Registrar_DoctorAsync(Entity_Doctor doctor) {
-            this.Registrar_DoctorAsync(doctor, null);
+        public void Registrar_DoctorAsync(string cedula, string nombre, string apellido1, string apellido2, string correo, string password, string especialidad, string telefono) {
+            this.Registrar_DoctorAsync(cedula, nombre, apellido1, apellido2, correo, password, especialidad, telefono, null);
         }
         
         /// <remarks/>
-        public void Registrar_DoctorAsync(Entity_Doctor doctor, object userState) {
+        public void Registrar_DoctorAsync(string cedula, string nombre, string apellido1, string apellido2, string correo, string password, string especialidad, string telefono, object userState) {
             if ((this.Registrar_DoctorOperationCompleted == null)) {
                 this.Registrar_DoctorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistrar_DoctorOperationCompleted);
             }
             this.InvokeAsync("Registrar_Doctor", new object[] {
-                        doctor}, this.Registrar_DoctorOperationCompleted, userState);
+                        cedula,
+                        nombre,
+                        apellido1,
+                        apellido2,
+                        correo,
+                        password,
+                        especialidad,
+                        telefono}, this.Registrar_DoctorOperationCompleted, userState);
         }
         
         private void OnRegistrar_DoctorOperationCompleted(object arg) {
@@ -371,24 +397,30 @@ namespace Clinica.WsClinica {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Agendar_Cita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Agendar_Cita(string cedula) {
+        public bool Agendar_Cita(string cedula_cliente, string cedula_doctor, string fecha_hora, string detalle) {
             object[] results = this.Invoke("Agendar_Cita", new object[] {
-                        cedula});
+                        cedula_cliente,
+                        cedula_doctor,
+                        fecha_hora,
+                        detalle});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Agendar_CitaAsync(string cedula) {
-            this.Agendar_CitaAsync(cedula, null);
+        public void Agendar_CitaAsync(string cedula_cliente, string cedula_doctor, string fecha_hora, string detalle) {
+            this.Agendar_CitaAsync(cedula_cliente, cedula_doctor, fecha_hora, detalle, null);
         }
         
         /// <remarks/>
-        public void Agendar_CitaAsync(string cedula, object userState) {
+        public void Agendar_CitaAsync(string cedula_cliente, string cedula_doctor, string fecha_hora, string detalle, object userState) {
             if ((this.Agendar_CitaOperationCompleted == null)) {
                 this.Agendar_CitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAgendar_CitaOperationCompleted);
             }
             this.InvokeAsync("Agendar_Cita", new object[] {
-                        cedula}, this.Agendar_CitaOperationCompleted, userState);
+                        cedula_cliente,
+                        cedula_doctor,
+                        fecha_hora,
+                        detalle}, this.Agendar_CitaOperationCompleted, userState);
         }
         
         private void OnAgendar_CitaOperationCompleted(object arg) {
@@ -400,24 +432,28 @@ namespace Clinica.WsClinica {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Remover_Cita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Remover_Cita(string cedula) {
+        public bool Remover_Cita(string ID_Cita, string cedula_doc, string fecha) {
             object[] results = this.Invoke("Remover_Cita", new object[] {
-                        cedula});
+                        ID_Cita,
+                        cedula_doc,
+                        fecha});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Remover_CitaAsync(string cedula) {
-            this.Remover_CitaAsync(cedula, null);
+        public void Remover_CitaAsync(string ID_Cita, string cedula_doc, string fecha) {
+            this.Remover_CitaAsync(ID_Cita, cedula_doc, fecha, null);
         }
         
         /// <remarks/>
-        public void Remover_CitaAsync(string cedula, object userState) {
+        public void Remover_CitaAsync(string ID_Cita, string cedula_doc, string fecha, object userState) {
             if ((this.Remover_CitaOperationCompleted == null)) {
                 this.Remover_CitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemover_CitaOperationCompleted);
             }
             this.InvokeAsync("Remover_Cita", new object[] {
-                        cedula}, this.Remover_CitaOperationCompleted, userState);
+                        ID_Cita,
+                        cedula_doc,
+                        fecha}, this.Remover_CitaOperationCompleted, userState);
         }
         
         private void OnRemover_CitaOperationCompleted(object arg) {
@@ -428,89 +464,87 @@ namespace Clinica.WsClinica {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Editar_Cita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Editar_Cita(string cedula) {
-            object[] results = this.Invoke("Editar_Cita", new object[] {
-                        cedula});
-            return ((bool)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_Cita_DOCTOR", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Data_Cita_DOCTOR(string doc_cedula) {
+            object[] results = this.Invoke("Data_Cita_DOCTOR", new object[] {
+                        doc_cedula});
+            return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Editar_CitaAsync(string cedula) {
-            this.Editar_CitaAsync(cedula, null);
+        public void Data_Cita_DOCTORAsync(string doc_cedula) {
+            this.Data_Cita_DOCTORAsync(doc_cedula, null);
         }
         
         /// <remarks/>
-        public void Editar_CitaAsync(string cedula, object userState) {
-            if ((this.Editar_CitaOperationCompleted == null)) {
-                this.Editar_CitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEditar_CitaOperationCompleted);
+        public void Data_Cita_DOCTORAsync(string doc_cedula, object userState) {
+            if ((this.Data_Cita_DOCTOROperationCompleted == null)) {
+                this.Data_Cita_DOCTOROperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_Cita_DOCTOROperationCompleted);
             }
-            this.InvokeAsync("Editar_Cita", new object[] {
-                        cedula}, this.Editar_CitaOperationCompleted, userState);
+            this.InvokeAsync("Data_Cita_DOCTOR", new object[] {
+                        doc_cedula}, this.Data_Cita_DOCTOROperationCompleted, userState);
         }
         
-        private void OnEditar_CitaOperationCompleted(object arg) {
-            if ((this.Editar_CitaCompleted != null)) {
+        private void OnData_Cita_DOCTOROperationCompleted(object arg) {
+            if ((this.Data_Cita_DOCTORCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Editar_CitaCompleted(this, new Editar_CitaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Data_Cita_DOCTORCompleted(this, new Data_Cita_DOCTORCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Crea_Historia_Clinica", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Crea_Historia_Clinica(string cedula) {
-            object[] results = this.Invoke("Crea_Historia_Clinica", new object[] {
-                        cedula});
-            return ((bool)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_Cita_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Data_Cita_User(string user_cedula) {
+            object[] results = this.Invoke("Data_Cita_User", new object[] {
+                        user_cedula});
+            return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Crea_Historia_ClinicaAsync(string cedula) {
-            this.Crea_Historia_ClinicaAsync(cedula, null);
+        public void Data_Cita_UserAsync(string user_cedula) {
+            this.Data_Cita_UserAsync(user_cedula, null);
         }
         
         /// <remarks/>
-        public void Crea_Historia_ClinicaAsync(string cedula, object userState) {
-            if ((this.Crea_Historia_ClinicaOperationCompleted == null)) {
-                this.Crea_Historia_ClinicaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCrea_Historia_ClinicaOperationCompleted);
+        public void Data_Cita_UserAsync(string user_cedula, object userState) {
+            if ((this.Data_Cita_UserOperationCompleted == null)) {
+                this.Data_Cita_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_Cita_UserOperationCompleted);
             }
-            this.InvokeAsync("Crea_Historia_Clinica", new object[] {
-                        cedula}, this.Crea_Historia_ClinicaOperationCompleted, userState);
+            this.InvokeAsync("Data_Cita_User", new object[] {
+                        user_cedula}, this.Data_Cita_UserOperationCompleted, userState);
         }
         
-        private void OnCrea_Historia_ClinicaOperationCompleted(object arg) {
-            if ((this.Crea_Historia_ClinicaCompleted != null)) {
+        private void OnData_Cita_UserOperationCompleted(object arg) {
+            if ((this.Data_Cita_UserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Crea_Historia_ClinicaCompleted(this, new Crea_Historia_ClinicaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Data_Cita_UserCompleted(this, new Data_Cita_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Elimina_Historia_Clinica", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Elimina_Historia_Clinica(string cedula) {
-            object[] results = this.Invoke("Elimina_Historia_Clinica", new object[] {
-                        cedula});
-            return ((bool)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_DOCTORES", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Data_DOCTORES() {
+            object[] results = this.Invoke("Data_DOCTORES", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Elimina_Historia_ClinicaAsync(string cedula) {
-            this.Elimina_Historia_ClinicaAsync(cedula, null);
+        public void Data_DOCTORESAsync() {
+            this.Data_DOCTORESAsync(null);
         }
         
         /// <remarks/>
-        public void Elimina_Historia_ClinicaAsync(string cedula, object userState) {
-            if ((this.Elimina_Historia_ClinicaOperationCompleted == null)) {
-                this.Elimina_Historia_ClinicaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnElimina_Historia_ClinicaOperationCompleted);
+        public void Data_DOCTORESAsync(object userState) {
+            if ((this.Data_DOCTORESOperationCompleted == null)) {
+                this.Data_DOCTORESOperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_DOCTORESOperationCompleted);
             }
-            this.InvokeAsync("Elimina_Historia_Clinica", new object[] {
-                        cedula}, this.Elimina_Historia_ClinicaOperationCompleted, userState);
+            this.InvokeAsync("Data_DOCTORES", new object[0], this.Data_DOCTORESOperationCompleted, userState);
         }
         
-        private void OnElimina_Historia_ClinicaOperationCompleted(object arg) {
-            if ((this.Elimina_Historia_ClinicaCompleted != null)) {
+        private void OnData_DOCTORESOperationCompleted(object arg) {
+            if ((this.Data_DOCTORESCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Elimina_Historia_ClinicaCompleted(this, new Elimina_Historia_ClinicaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Data_DOCTORESCompleted(this, new Data_DOCTORESCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -530,204 +564,6 @@ namespace Clinica.WsClinica {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Entity_User {
-        
-        private string cedulaField;
-        
-        private string nombreField;
-        
-        private string apellido1Field;
-        
-        private string apellido2Field;
-        
-        private string correoField;
-        
-        private string passwordField;
-        
-        private string telefonoField;
-        
-        /// <remarks/>
-        public string cedula {
-            get {
-                return this.cedulaField;
-            }
-            set {
-                this.cedulaField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string apellido1 {
-            get {
-                return this.apellido1Field;
-            }
-            set {
-                this.apellido1Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string apellido2 {
-            get {
-                return this.apellido2Field;
-            }
-            set {
-                this.apellido2Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                this.correoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                this.passwordField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string telefono {
-            get {
-                return this.telefonoField;
-            }
-            set {
-                this.telefonoField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Entity_Doctor {
-        
-        private string cedulaField;
-        
-        private string nombreField;
-        
-        private string apellido1Field;
-        
-        private string apellido2Field;
-        
-        private string correoField;
-        
-        private string passwordField;
-        
-        private string especialidadField;
-        
-        private string telefonoField;
-        
-        /// <remarks/>
-        public string cedula {
-            get {
-                return this.cedulaField;
-            }
-            set {
-                this.cedulaField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string apellido1 {
-            get {
-                return this.apellido1Field;
-            }
-            set {
-                this.apellido1Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string apellido2 {
-            get {
-                return this.apellido2Field;
-            }
-            set {
-                this.apellido2Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                this.correoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string password {
-            get {
-                return this.passwordField;
-            }
-            set {
-                this.passwordField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string especialidad {
-            get {
-                return this.especialidadField;
-            }
-            set {
-                this.especialidadField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string telefono {
-            get {
-                return this.telefonoField;
-            }
-            set {
-                this.telefonoField = value;
-            }
         }
     }
     
@@ -993,78 +829,78 @@ namespace Clinica.WsClinica {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Editar_CitaCompletedEventHandler(object sender, Editar_CitaCompletedEventArgs e);
+    public delegate void Data_Cita_DOCTORCompletedEventHandler(object sender, Data_Cita_DOCTORCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Editar_CitaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Data_Cita_DOCTORCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Editar_CitaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Data_Cita_DOCTORCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public bool Result {
+        public System.Data.DataSet Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Crea_Historia_ClinicaCompletedEventHandler(object sender, Crea_Historia_ClinicaCompletedEventArgs e);
+    public delegate void Data_Cita_UserCompletedEventHandler(object sender, Data_Cita_UserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Crea_Historia_ClinicaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Data_Cita_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Crea_Historia_ClinicaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Data_Cita_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public bool Result {
+        public System.Data.DataSet Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Elimina_Historia_ClinicaCompletedEventHandler(object sender, Elimina_Historia_ClinicaCompletedEventArgs e);
+    public delegate void Data_DOCTORESCompletedEventHandler(object sender, Data_DOCTORESCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Elimina_Historia_ClinicaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Data_DOCTORESCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Elimina_Historia_ClinicaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Data_DOCTORESCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public bool Result {
+        public System.Data.DataSet Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }
