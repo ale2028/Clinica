@@ -1,6 +1,7 @@
 ﻿using Clinica.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -76,7 +77,7 @@ namespace Clinica.Controllers
         /// <param name="model"></param>
         /// <returns></returns>s
         [HttpPost]
-        public ActionResult EliminarUsuario(Usuario model)
+        public ActionResult EliminarUsuario(EliminarUsuario model)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +85,7 @@ namespace Clinica.Controllers
                 WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
 
                 bool result = server.Remover_Usuario (model.Cedula);
-
+                
 
                 Console.WriteLine(result);
                 return RedirectToAction("Index");

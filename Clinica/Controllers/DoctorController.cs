@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,11 +16,22 @@ namespace Clinica.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            // Llamamos al servicio web para eliminar un usuario
             WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
-            var doctores = server.Data_DOCTORES().Tables;
-            Console.WriteLine(doctores[0]);
 
-            return View(new List<Doctor>());
+            var result = server.Data_DOCTORES();
+            List<Doctor> doctores = new List<Doctor>();
+            foreach (DataRow item in result.Tables[0].Rows)
+            {
+                Doctor doc = new Doctor();
+                doc.Cedula = item.ItemArray.GetValue(0).ToString();
+                doc.Nombre = item.ItemArray.GetValue(1).ToString();
+                doc.Apellido1 = item.ItemArray.GetValue(2).ToString();
+                doc.Telefono = item.ItemArray.GetValue(3).ToString();
+                doctores.Add(doc);
+
+            }
+            return View(doctores);
         }
 
         /// <summary>
@@ -73,35 +85,11 @@ namespace Clinica.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult EliminarDoctor()
+        public ActionResult EliminarDoctor(String id)
         {
-            return View();
-        }
-
-        /// <summary>
-        /// Recibe los datos de la vista
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>s
-        [HttpPost]
-        public ActionResult EliminarDoctor(Doctor model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Llamamos al servicio web para eliminar un doctor
-                WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
-
-                bool result = server.Remover_Doctor (model.Cedula);
-
-
-                Console.WriteLine(result);
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ModelState.AddModelError("Datos erroneos", "El doctor no fue encontrado");
-            }
-            return View(model);
+            WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
+            bool result = server.Remover_Doctor(id);
+            return RedirectToAction("Index", "Doctor");
         }
 
     }

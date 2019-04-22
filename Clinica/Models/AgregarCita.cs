@@ -6,8 +6,12 @@ using System.Web;
 
 namespace Clinica.Models
 {
-    public class Cita
+    public class AgregarCita
     {
+        [Required]
+        [DataType(DataType.Text)]
+        public string IdCita { set; get; }
+
         [Required]
         [DataType(DataType.Text)]
         public string CedulaCliente { set; get; }
@@ -18,15 +22,11 @@ namespace Clinica.Models
 
         [Required]
         [DataType(DataType.DateTime)]
-        public string Fecha_Hora { set; get; }
+        public DateTime Fecha_Hora { set; get; }
 
         [Required]
         [DataType(DataType.Text)]
         public string Detalle { set; get; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string IdCita { set; get; }
 
     }
 }

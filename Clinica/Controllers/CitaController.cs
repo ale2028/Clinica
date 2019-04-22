@@ -1,6 +1,7 @@
 ﻿using Clinica.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,9 +11,24 @@ namespace Clinica.Controllers
     public class CitaController : Controller
     {
         // GET: Cita
-        public ActionResult Index()
+        public ActionResult Index(String id)
         {
-            return View();
+            // Llamamos al servicio web para eliminar un usuario
+            WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
+
+            var result = server.Data_Cita_DOCTOR(id);
+            List<AgregarCita> citas = new List<AgregarCita>();
+            foreach (DataRow item in result.Tables[0].Rows) 
+            {
+                AgregarCita cita = new AgregarCita();
+                // cita.Cedula = item.ItemArray.GetValue(0).ToString();
+                // cita.Nombre = item.ItemArray.GetValue(1).ToString();
+                // cita.Apellido1 = item.ItemArray.GetValue(2).ToString();
+                // cita.Telefono = item.ItemArray.GetValue(3).ToString();
+                citas.Add(cita);
+
+            }
+            return View(citas);
         }
 
         /// <summary>
@@ -22,7 +38,9 @@ namespace Clinica.Controllers
         [HttpGet]
         public ActionResult AgregarCita()
         {
-            return View();
+            AgregarCita model = new AgregarCita();
+            model.IdCita = Guid.NewGuid().ToString();
+            return View(model);
         }
 
         /// <summary>
@@ -31,7 +49,7 @@ namespace Clinica.Controllers
         /// <param name="model"></param>
         /// <returns></returns>s
         [HttpPost]
-        public ActionResult AgregarCita(Cita model)
+        public ActionResult AgregarCita(AgregarCita model)
         {
             if (ModelState.IsValid)
             {
@@ -42,7 +60,7 @@ namespace Clinica.Controllers
                     (
                     model.CedulaCliente,
                     model.CedulaDoctor,
-                    model.Fecha_Hora,
+                    model.Fecha_Hora.ToLongDateString(),
                     model.Detalle
                     );
 
@@ -73,7 +91,7 @@ namespace Clinica.Controllers
         /// <param name="model"></param>
         /// <returns></returns>s
         [HttpPost]
-        public ActionResult CancelarCita(Cita model)
+        public ActionResult CancelarCita(EliminarCita model)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +102,7 @@ namespace Clinica.Controllers
                     (
                     model.IdCita,
                     model.CedulaDoctor,
-                    model.Fecha_Hora
+                    model.Fecha_Hora.ToLongDateString()
                     );
 
 
