@@ -19,7 +19,7 @@ namespace Clinica.Controllers
             // Llamamos al servicio web para eliminar un usuario
             WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
 
-            var result = server.Data_DOCTORES();
+            var result = server.Consulta_Doctores();
             List<Doctor> doctores = new List<Doctor>();
             foreach (DataRow item in result.Tables[0].Rows)
             {

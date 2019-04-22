@@ -36,9 +36,9 @@ namespace Clinica.WsClinica {
         
         private System.Threading.SendOrPostCallback Login_UsuarioOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Data_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Datos_UsuarioOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Doctor_Data_CitaOperationCompleted;
+        private System.Threading.SendOrPostCallback Datos_DoctorOperationCompleted;
         
         private System.Threading.SendOrPostCallback Registrar_DoctorOperationCompleted;
         
@@ -50,11 +50,11 @@ namespace Clinica.WsClinica {
         
         private System.Threading.SendOrPostCallback Remover_CitaOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Data_Cita_DOCTOROperationCompleted;
+        private System.Threading.SendOrPostCallback Citas_DoctorOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Data_Cita_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Citas_UsuarioOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Data_DOCTORESOperationCompleted;
+        private System.Threading.SendOrPostCallback Consulta_DoctoresOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -104,10 +104,10 @@ namespace Clinica.WsClinica {
         public event Login_UsuarioCompletedEventHandler Login_UsuarioCompleted;
         
         /// <remarks/>
-        public event Data_UserCompletedEventHandler Data_UserCompleted;
+        public event Datos_UsuarioCompletedEventHandler Datos_UsuarioCompleted;
         
         /// <remarks/>
-        public event Doctor_Data_CitaCompletedEventHandler Doctor_Data_CitaCompleted;
+        public event Datos_DoctorCompletedEventHandler Datos_DoctorCompleted;
         
         /// <remarks/>
         public event Registrar_DoctorCompletedEventHandler Registrar_DoctorCompleted;
@@ -125,13 +125,13 @@ namespace Clinica.WsClinica {
         public event Remover_CitaCompletedEventHandler Remover_CitaCompleted;
         
         /// <remarks/>
-        public event Data_Cita_DOCTORCompletedEventHandler Data_Cita_DOCTORCompleted;
+        public event Citas_DoctorCompletedEventHandler Citas_DoctorCompleted;
         
         /// <remarks/>
-        public event Data_Cita_UserCompletedEventHandler Data_Cita_UserCompleted;
+        public event Citas_UsuarioCompletedEventHandler Citas_UsuarioCompleted;
         
         /// <remarks/>
-        public event Data_DOCTORESCompletedEventHandler Data_DOCTORESCompleted;
+        public event Consulta_DoctoresCompletedEventHandler Consulta_DoctoresCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Registrar_Usuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -235,60 +235,60 @@ namespace Clinica.WsClinica {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet Data_User(string cedula) {
-            object[] results = this.Invoke("Data_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Datos_Usuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Datos_Usuario(string cedula) {
+            object[] results = this.Invoke("Datos_Usuario", new object[] {
                         cedula});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Data_UserAsync(string cedula) {
-            this.Data_UserAsync(cedula, null);
+        public void Datos_UsuarioAsync(string cedula) {
+            this.Datos_UsuarioAsync(cedula, null);
         }
         
         /// <remarks/>
-        public void Data_UserAsync(string cedula, object userState) {
-            if ((this.Data_UserOperationCompleted == null)) {
-                this.Data_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_UserOperationCompleted);
+        public void Datos_UsuarioAsync(string cedula, object userState) {
+            if ((this.Datos_UsuarioOperationCompleted == null)) {
+                this.Datos_UsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDatos_UsuarioOperationCompleted);
             }
-            this.InvokeAsync("Data_User", new object[] {
-                        cedula}, this.Data_UserOperationCompleted, userState);
+            this.InvokeAsync("Datos_Usuario", new object[] {
+                        cedula}, this.Datos_UsuarioOperationCompleted, userState);
         }
         
-        private void OnData_UserOperationCompleted(object arg) {
-            if ((this.Data_UserCompleted != null)) {
+        private void OnDatos_UsuarioOperationCompleted(object arg) {
+            if ((this.Datos_UsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Data_UserCompleted(this, new Data_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Datos_UsuarioCompleted(this, new Datos_UsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Doctor_Data_Cita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet Doctor_Data_Cita(string cedula) {
-            object[] results = this.Invoke("Doctor_Data_Cita", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Datos_Doctor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Datos_Doctor(string cedula) {
+            object[] results = this.Invoke("Datos_Doctor", new object[] {
                         cedula});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Doctor_Data_CitaAsync(string cedula) {
-            this.Doctor_Data_CitaAsync(cedula, null);
+        public void Datos_DoctorAsync(string cedula) {
+            this.Datos_DoctorAsync(cedula, null);
         }
         
         /// <remarks/>
-        public void Doctor_Data_CitaAsync(string cedula, object userState) {
-            if ((this.Doctor_Data_CitaOperationCompleted == null)) {
-                this.Doctor_Data_CitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDoctor_Data_CitaOperationCompleted);
+        public void Datos_DoctorAsync(string cedula, object userState) {
+            if ((this.Datos_DoctorOperationCompleted == null)) {
+                this.Datos_DoctorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDatos_DoctorOperationCompleted);
             }
-            this.InvokeAsync("Doctor_Data_Cita", new object[] {
-                        cedula}, this.Doctor_Data_CitaOperationCompleted, userState);
+            this.InvokeAsync("Datos_Doctor", new object[] {
+                        cedula}, this.Datos_DoctorOperationCompleted, userState);
         }
         
-        private void OnDoctor_Data_CitaOperationCompleted(object arg) {
-            if ((this.Doctor_Data_CitaCompleted != null)) {
+        private void OnDatos_DoctorOperationCompleted(object arg) {
+            if ((this.Datos_DoctorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Doctor_Data_CitaCompleted(this, new Doctor_Data_CitaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Datos_DoctorCompleted(this, new Datos_DoctorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -397,7 +397,7 @@ namespace Clinica.WsClinica {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Agendar_Cita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Agendar_Cita(string cedula_cliente, string cedula_doctor, string fecha_hora, string detalle) {
+        public bool Agendar_Cita(string cedula_cliente, string cedula_doctor, System.DateTime fecha_hora, string detalle) {
             object[] results = this.Invoke("Agendar_Cita", new object[] {
                         cedula_cliente,
                         cedula_doctor,
@@ -407,12 +407,12 @@ namespace Clinica.WsClinica {
         }
         
         /// <remarks/>
-        public void Agendar_CitaAsync(string cedula_cliente, string cedula_doctor, string fecha_hora, string detalle) {
+        public void Agendar_CitaAsync(string cedula_cliente, string cedula_doctor, System.DateTime fecha_hora, string detalle) {
             this.Agendar_CitaAsync(cedula_cliente, cedula_doctor, fecha_hora, detalle, null);
         }
         
         /// <remarks/>
-        public void Agendar_CitaAsync(string cedula_cliente, string cedula_doctor, string fecha_hora, string detalle, object userState) {
+        public void Agendar_CitaAsync(string cedula_cliente, string cedula_doctor, System.DateTime fecha_hora, string detalle, object userState) {
             if ((this.Agendar_CitaOperationCompleted == null)) {
                 this.Agendar_CitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAgendar_CitaOperationCompleted);
             }
@@ -432,7 +432,7 @@ namespace Clinica.WsClinica {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Remover_Cita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Remover_Cita(string ID_Cita, string cedula_doc, string fecha) {
+        public bool Remover_Cita(string ID_Cita, string cedula_doc, System.DateTime fecha) {
             object[] results = this.Invoke("Remover_Cita", new object[] {
                         ID_Cita,
                         cedula_doc,
@@ -441,12 +441,12 @@ namespace Clinica.WsClinica {
         }
         
         /// <remarks/>
-        public void Remover_CitaAsync(string ID_Cita, string cedula_doc, string fecha) {
+        public void Remover_CitaAsync(string ID_Cita, string cedula_doc, System.DateTime fecha) {
             this.Remover_CitaAsync(ID_Cita, cedula_doc, fecha, null);
         }
         
         /// <remarks/>
-        public void Remover_CitaAsync(string ID_Cita, string cedula_doc, string fecha, object userState) {
+        public void Remover_CitaAsync(string ID_Cita, string cedula_doc, System.DateTime fecha, object userState) {
             if ((this.Remover_CitaOperationCompleted == null)) {
                 this.Remover_CitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemover_CitaOperationCompleted);
             }
@@ -464,87 +464,87 @@ namespace Clinica.WsClinica {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_Cita_DOCTOR", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet Data_Cita_DOCTOR(string doc_cedula) {
-            object[] results = this.Invoke("Data_Cita_DOCTOR", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Citas_Doctor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Citas_Doctor(string doc_cedula) {
+            object[] results = this.Invoke("Citas_Doctor", new object[] {
                         doc_cedula});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Data_Cita_DOCTORAsync(string doc_cedula) {
-            this.Data_Cita_DOCTORAsync(doc_cedula, null);
+        public void Citas_DoctorAsync(string doc_cedula) {
+            this.Citas_DoctorAsync(doc_cedula, null);
         }
         
         /// <remarks/>
-        public void Data_Cita_DOCTORAsync(string doc_cedula, object userState) {
-            if ((this.Data_Cita_DOCTOROperationCompleted == null)) {
-                this.Data_Cita_DOCTOROperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_Cita_DOCTOROperationCompleted);
+        public void Citas_DoctorAsync(string doc_cedula, object userState) {
+            if ((this.Citas_DoctorOperationCompleted == null)) {
+                this.Citas_DoctorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCitas_DoctorOperationCompleted);
             }
-            this.InvokeAsync("Data_Cita_DOCTOR", new object[] {
-                        doc_cedula}, this.Data_Cita_DOCTOROperationCompleted, userState);
+            this.InvokeAsync("Citas_Doctor", new object[] {
+                        doc_cedula}, this.Citas_DoctorOperationCompleted, userState);
         }
         
-        private void OnData_Cita_DOCTOROperationCompleted(object arg) {
-            if ((this.Data_Cita_DOCTORCompleted != null)) {
+        private void OnCitas_DoctorOperationCompleted(object arg) {
+            if ((this.Citas_DoctorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Data_Cita_DOCTORCompleted(this, new Data_Cita_DOCTORCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Citas_DoctorCompleted(this, new Citas_DoctorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_Cita_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet Data_Cita_User(string user_cedula) {
-            object[] results = this.Invoke("Data_Cita_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Citas_Usuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Citas_Usuario(string user_cedula) {
+            object[] results = this.Invoke("Citas_Usuario", new object[] {
                         user_cedula});
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Data_Cita_UserAsync(string user_cedula) {
-            this.Data_Cita_UserAsync(user_cedula, null);
+        public void Citas_UsuarioAsync(string user_cedula) {
+            this.Citas_UsuarioAsync(user_cedula, null);
         }
         
         /// <remarks/>
-        public void Data_Cita_UserAsync(string user_cedula, object userState) {
-            if ((this.Data_Cita_UserOperationCompleted == null)) {
-                this.Data_Cita_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_Cita_UserOperationCompleted);
+        public void Citas_UsuarioAsync(string user_cedula, object userState) {
+            if ((this.Citas_UsuarioOperationCompleted == null)) {
+                this.Citas_UsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCitas_UsuarioOperationCompleted);
             }
-            this.InvokeAsync("Data_Cita_User", new object[] {
-                        user_cedula}, this.Data_Cita_UserOperationCompleted, userState);
+            this.InvokeAsync("Citas_Usuario", new object[] {
+                        user_cedula}, this.Citas_UsuarioOperationCompleted, userState);
         }
         
-        private void OnData_Cita_UserOperationCompleted(object arg) {
-            if ((this.Data_Cita_UserCompleted != null)) {
+        private void OnCitas_UsuarioOperationCompleted(object arg) {
+            if ((this.Citas_UsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Data_Cita_UserCompleted(this, new Data_Cita_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Citas_UsuarioCompleted(this, new Citas_UsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Data_DOCTORES", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet Data_DOCTORES() {
-            object[] results = this.Invoke("Data_DOCTORES", new object[0]);
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Consulta_Doctores", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet Consulta_Doctores() {
+            object[] results = this.Invoke("Consulta_Doctores", new object[0]);
             return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
-        public void Data_DOCTORESAsync() {
-            this.Data_DOCTORESAsync(null);
+        public void Consulta_DoctoresAsync() {
+            this.Consulta_DoctoresAsync(null);
         }
         
         /// <remarks/>
-        public void Data_DOCTORESAsync(object userState) {
-            if ((this.Data_DOCTORESOperationCompleted == null)) {
-                this.Data_DOCTORESOperationCompleted = new System.Threading.SendOrPostCallback(this.OnData_DOCTORESOperationCompleted);
+        public void Consulta_DoctoresAsync(object userState) {
+            if ((this.Consulta_DoctoresOperationCompleted == null)) {
+                this.Consulta_DoctoresOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsulta_DoctoresOperationCompleted);
             }
-            this.InvokeAsync("Data_DOCTORES", new object[0], this.Data_DOCTORESOperationCompleted, userState);
+            this.InvokeAsync("Consulta_Doctores", new object[0], this.Consulta_DoctoresOperationCompleted, userState);
         }
         
-        private void OnData_DOCTORESOperationCompleted(object arg) {
-            if ((this.Data_DOCTORESCompleted != null)) {
+        private void OnConsulta_DoctoresOperationCompleted(object arg) {
+            if ((this.Consulta_DoctoresCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Data_DOCTORESCompleted(this, new Data_DOCTORESCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Consulta_DoctoresCompleted(this, new Consulta_DoctoresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -647,17 +647,17 @@ namespace Clinica.WsClinica {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Data_UserCompletedEventHandler(object sender, Data_UserCompletedEventArgs e);
+    public delegate void Datos_UsuarioCompletedEventHandler(object sender, Datos_UsuarioCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Data_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Datos_UsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Data_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Datos_UsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -673,17 +673,17 @@ namespace Clinica.WsClinica {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Doctor_Data_CitaCompletedEventHandler(object sender, Doctor_Data_CitaCompletedEventArgs e);
+    public delegate void Datos_DoctorCompletedEventHandler(object sender, Datos_DoctorCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Doctor_Data_CitaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Datos_DoctorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Doctor_Data_CitaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Datos_DoctorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -829,17 +829,17 @@ namespace Clinica.WsClinica {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Data_Cita_DOCTORCompletedEventHandler(object sender, Data_Cita_DOCTORCompletedEventArgs e);
+    public delegate void Citas_DoctorCompletedEventHandler(object sender, Citas_DoctorCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Data_Cita_DOCTORCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Citas_DoctorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Data_Cita_DOCTORCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Citas_DoctorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -855,17 +855,17 @@ namespace Clinica.WsClinica {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Data_Cita_UserCompletedEventHandler(object sender, Data_Cita_UserCompletedEventArgs e);
+    public delegate void Citas_UsuarioCompletedEventHandler(object sender, Citas_UsuarioCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Data_Cita_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Citas_UsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Data_Cita_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Citas_UsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -881,17 +881,17 @@ namespace Clinica.WsClinica {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
-    public delegate void Data_DOCTORESCompletedEventHandler(object sender, Data_DOCTORESCompletedEventArgs e);
+    public delegate void Consulta_DoctoresCompletedEventHandler(object sender, Consulta_DoctoresCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3190.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Data_DOCTORESCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Consulta_DoctoresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Data_DOCTORESCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Consulta_DoctoresCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

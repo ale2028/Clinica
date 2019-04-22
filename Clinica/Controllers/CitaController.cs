@@ -16,7 +16,7 @@ namespace Clinica.Controllers
             // Llamamos al servicio web para eliminar un usuario
             WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
 
-            var result = server.Data_Cita_DOCTOR(id);
+            var result = server.Citas_Doctor(id);
             List<AgregarCita> citas = new List<AgregarCita>();
             foreach (DataRow item in result.Tables[0].Rows) 
             {
@@ -60,7 +60,7 @@ namespace Clinica.Controllers
                     (
                     model.CedulaCliente,
                     model.CedulaDoctor,
-                    model.Fecha_Hora.ToLongDateString(),
+                    model.Fecha_Hora,
                     model.Detalle
                     );
 
@@ -102,7 +102,7 @@ namespace Clinica.Controllers
                     (
                     model.IdCita,
                     model.CedulaDoctor,
-                    model.Fecha_Hora.ToLongDateString()
+                    model.Fecha_Hora
                     );
 
 
