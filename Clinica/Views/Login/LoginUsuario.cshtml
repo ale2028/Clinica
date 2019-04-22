@@ -8,10 +8,10 @@
 <h2>Login </h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Login</h4>
         <hr />
@@ -40,7 +40,14 @@
     </div>
 }
 
+<div>
+    @Html.ActionLink("Registarse como Doctor", "Register", "Doctor")
+</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div>
+    @Html.ActionLink("Registarse como Usuario", "Register", "Usuario")
+</div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

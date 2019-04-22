@@ -16,19 +16,19 @@ namespace Clinica.Controllers
             // Llamamos al servicio web para eliminar un usuario
             WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
 
-            var result = server.Citas_Doctor(id);
-            List<AgregarCita> citas = new List<AgregarCita>();
-            foreach (DataRow item in result.Tables[0].Rows) 
+            var result = server.Consulta_Doctores();
+            List<Doctor> doctores = new List<Doctor>();
+            foreach (DataRow item in result.Tables[0].Rows)
             {
-                AgregarCita cita = new AgregarCita();
-                // cita.Cedula = item.ItemArray.GetValue(0).ToString();
-                // cita.Nombre = item.ItemArray.GetValue(1).ToString();
-                // cita.Apellido1 = item.ItemArray.GetValue(2).ToString();
-                // cita.Telefono = item.ItemArray.GetValue(3).ToString();
-                citas.Add(cita);
+                Doctor doc = new Doctor();
+                doc.Cedula = item.ItemArray.GetValue(0).ToString();
+                doc.Nombre = item.ItemArray.GetValue(1).ToString();
+                doc.Apellido1 = item.ItemArray.GetValue(2).ToString();
+                doc.Telefono = item.ItemArray.GetValue(3).ToString();
+                doctores.Add(doc);
 
             }
-            return View(citas);
+            return View(doctores);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Clinica.Controllers
 
 
                 Console.WriteLine(result);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

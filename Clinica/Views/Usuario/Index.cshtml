@@ -1,51 +1,19 @@
-﻿@model IEnumerable<Clinica.Models.Doctor>
+﻿@model IEnumerable<Clinica.Models.Usuario>
 
 @{
-    ViewBag.Title = "Lista de Doctores";
+    ViewBag.Title = "Lista de Citas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lista de Doctores</h2>
+<h2>Lista de Citas</h2>
 
+<p>
+    @Html.ActionLink("Agregar Cita", "Agendar Cita")
+    @Html.ActionLink("Eliminar mi cuenta", "EliminarUsuario", "Usuario")
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apellido1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-
-        </tr>
-    }
-
-    <p>
-        @Html.ActionLink("Agendar Cita", "AgregarCita", "Cita")
-    </p>
-
+</p>
+   
+<p>
+    @Html.ActionLink("Eliminar mi cuenta", "EliminarUsuario", "Usuario")
+</p>
 </table>

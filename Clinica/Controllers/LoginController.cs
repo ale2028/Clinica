@@ -1,6 +1,7 @@
 ﻿using Clinica.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +13,23 @@ namespace Clinica.Controllers
         // GET: LoginUsuario
         public ActionResult Index()
         {
-            return View();
+            // Llamamos al servicio web para eliminar un usuario
+            WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
+
+            var result = server.Consulta_Doctores();
+            List<Doctor> doctores = new List<Doctor>();
+            foreach (DataRow item in result.Tables[0].Rows)
+            {
+                Doctor doc = new Doctor();
+                doc.Cedula = item.ItemArray.GetValue(0).ToString();
+                doc.Nombre = item.ItemArray.GetValue(1).ToString();
+                doc.Apellido1 = item.ItemArray.GetValue(2).ToString();
+                doc.Telefono = item.ItemArray.GetValue(3).ToString();
+                doctores.Add(doc);
+
+            }
+            return View(doctores);
+       
         }
 
         /// <summary>

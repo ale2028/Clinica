@@ -11,7 +11,7 @@ namespace Clinica.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             // Llamamos al servicio web para eliminar un usuario
             WsClinica.WS_SERVER server = new WsClinica.WS_SERVER();
@@ -29,7 +29,6 @@ namespace Clinica.Controllers
 
             }
             return View(doctores);
-          
         }
 
         /// <summary>
@@ -104,7 +103,7 @@ namespace Clinica.Controllers
                 
 
                 Console.WriteLine(result);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

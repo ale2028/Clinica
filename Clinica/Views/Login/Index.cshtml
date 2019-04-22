@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<Clinica.Models.Doctor>
 
 @{
-    ViewBag.Title = "Lista Doctores";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Lista de Doctores";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lista Doctores</h2>
+<h2>Lista de Doctores</h2>
 
-<p>
-    @Html.ActionLink("Registrar Doctor", "Register")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -42,10 +42,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Telefono)
             </td>
-            <td>
-                @Html.ActionLink("Delete", "EliminarDoctor", new { id=item.Cedula })
-            </td>
+
         </tr>
     }
 
+    <p>
+        @Html.ActionLink("Agendar Cita", "AgregarCita", "Cita")
+    </p>
+
 </table>
+
