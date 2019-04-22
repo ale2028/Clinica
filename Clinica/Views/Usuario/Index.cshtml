@@ -1,19 +1,27 @@
 ﻿@model IEnumerable<Clinica.Models.Usuario>
 
 @{
-    ViewBag.Title = "Lista de Citas";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lista de Citas</h2>
+<h2>Index</h2>
+
+
+<div>
+    <center>
+        <h1>Bienvenido a la Clinica ULACIT</h1>
+
+        <img src=http://www.ulacit.ac.cr/files/subsecciones/images/detail/1e548d45632f113002a9475eed40ebdd.jpg width=”100” height=”80” />
+
+        <p><a class="btn btn-default" href="http://www.ulacit.ac.cr/desarrollo/clinica.php?id=5">Leer más acerca de la clinica &raquo;</a></p>
+    </center>
+</div>
 
 <p>
-    @Html.ActionLink("Agregar Cita", "Agendar Cita")
-    @Html.ActionLink("Eliminar mi cuenta", "EliminarUsuario", "Usuario")
-
+@Html.ActionLink("Agendar Cita", "AgregarCita", "Cita")
 </p>
-   
 <p>
-    @Html.ActionLink("Eliminar mi cuenta", "EliminarUsuario", "Usuario")
+    @Html.ActionLink("Eliminar cuenta", "EliminarUsuario")
 </p>
-</table>
+
